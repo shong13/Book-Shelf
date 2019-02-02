@@ -22,7 +22,7 @@ class BooksApp extends Component {
   	BooksAPI.update(book, shelf).then(()=> {
   		book.shelf = shelf
   		this.setState(state => ({
-  			allBooks: state.allBooks.filter(b => b.id !== book.id).concat([book])
+  			allBooks: state.allBooks
   		}))
   	})
   }
