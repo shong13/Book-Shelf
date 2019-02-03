@@ -7,7 +7,9 @@ import * as BooksAPI from './BooksAPI'
 
 class BooksApp extends Component {
   state = {
-    allBooks: []
+    allBooks: [],
+    results: [],
+    query: ''
   }
 
   componentDidMount() {
@@ -22,9 +24,23 @@ class BooksApp extends Component {
   	BooksAPI.update(book, shelf).then(()=> {
   		book.shelf = shelf
   		this.setState(state => ({
-  			allBooks: state.allBooks
+  			allBooks: state.allBooks.filter(b => b.id !== book.id).concat([book])
   		}))
   	})
+  }
+
+  searchBooks() {
+    BooksAPI.search(this.state.query).then(res => {
+      return this.setState({ results: res })
+    })
+  }
+
+  updateQuery = (query) => {
+    if(query){
+      this.setState({query: query}, this.searchBooks)
+    } else{
+      this.setState({query: ''})
+    }
   }
 
   render() {
@@ -32,7 +48,7 @@ class BooksApp extends Component {
       
       <div className="app">
         <Route exact path="/search" render={()=>(
-        	<SearchBooks book={this.state} />
+        	<SearchBooks updateQuery={this.updateQuery} change={this.changeShelf} book={this.state} searchBooks={this.searchBooks} />
         )}/>
         <Route exact path="/" render={()=>(
         	<Home book={this.state} change={this.changeShelf}/>
