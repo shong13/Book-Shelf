@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 class Home extends Component {
 	render() {
+		const { allBooks } = this.props.book
+
 		return(
 			<div className="list-books">
 				<div className="list-books-title">
@@ -11,9 +13,9 @@ class Home extends Component {
 				</div>
 				<div className="list-books-content">
 					<div>
-						<Shelf c={this.props.change} shelfName="Currently Reading" books={this.props.book.allBooks.filter(books => books.shelf === "currentlyReading")}/>
-						<Shelf c={this.props.change} shelfName="Want To Read" books={this.props.book.allBooks.filter(books => books.shelf === "wantToRead")}/>
-						<Shelf c={this.props.change} shelfName="Finished Reading" books={this.props.book.allBooks.filter(books => books.shelf === "read")}/>
+						<Shelf c={this.props.change} shelfName="Currently Reading" books={allBooks.filter(books => books.shelf === "currentlyReading")}/>
+						<Shelf c={this.props.change} shelfName="Want To Read" books={allBooks.filter(books => books.shelf === "wantToRead")}/>
+						<Shelf c={this.props.change} shelfName="Finished Reading" books={allBooks.filter(books => books.shelf === "read")}/>
 					</div>
 				</div>
 				<div className="open-search">
