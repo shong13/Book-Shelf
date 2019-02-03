@@ -12,7 +12,7 @@ class BooksApp extends Component {
     query: ''
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     BooksAPI.getAll().then((books) => {
       this.setState({ 
       	allBooks: books
@@ -29,19 +29,22 @@ class BooksApp extends Component {
   	})
   }
 
-  searchBooks() {
-    BooksAPI.search(this.state.query).then(res => {
-      return this.setState({ results: res })
+  searchBooks = () => {
+    if (this.state.query === ''){
+      return this.setState({ results: [] })
+    }
+    BooksAPI.search(this.state.query.trim()).then(res => {
+      return this.setState(res ? { results: res } : { results: [] })
     })
   }
 
   updateQuery = (query) => {
-    if(query){
-      this.setState({query: query}, this.searchBooks)
-    } else{
-      this.setState({query: ''})
-    }
+    query ? this.setState({query: query}, this.searchBooks) :
+      this.setState({query: ''}, this.searchBooks)
   }
+
+  
+
 
   render() {
     return (

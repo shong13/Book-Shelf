@@ -5,6 +5,8 @@ import Books from './Books'
 class SearchBooks extends Component {
 	
 	render() {
+		const { results } = this.props.book
+
 		return (
 			<div className="search-books">
 				<div className="search-books-bar">
@@ -28,11 +30,11 @@ class SearchBooks extends Component {
 				</div>
 				<div className="search-books-results">
 					<ol className="books-grid">
-						{this.props.book.results.map((details)=> (
+						{results.map((details)=> (
 							<li key={details.id}>
 								<Books shelfUpdate={this.props.change} bookInfo={details}/>
 							</li>
-						))}
+						))} 
 					</ol>
 
 				</div>
