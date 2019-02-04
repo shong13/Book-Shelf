@@ -19,9 +19,9 @@ class Books extends Component {
 				</div>
 			  </div>
 			  <div className="book-title">{title}</div>
-			  {authors.map((names) =>
-			  	<div className="book-authors">{names}</div>
-			  )}
+			  {authors ? authors.map((names, index) =>
+			  	<div key={index} className="book-authors">{names}</div>
+			  ) : undefined}
 			</div>
 		)
 	}

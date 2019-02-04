@@ -30,11 +30,15 @@ class BooksApp extends Component {
   }
 
   searchBooks = () => {
-    if (this.state.query === ''){
+    if (this.state.query === '' || this.state.query === undefined){
       return this.setState({ results: [] })
     }
     BooksAPI.search(this.state.query.trim()).then(res => {
-      return this.setState(res ? { results: res } : { results: [] })
+      if(res.error || !res){
+        return this.setState({ results: [] })
+      } else {
+        return this.setState({ results: res })
+      }
     })
   }
 
