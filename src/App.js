@@ -30,7 +30,7 @@ class BooksApp extends Component {
   }
 
   searchBooks = () => {
-    if (this.state.query === '' || this.state.query === undefined){
+    if (this.state.query.trim() === '' || this.state.query === undefined){
       return this.setState({ results: [] })
     }
     BooksAPI.search(this.state.query.trim()).then(res => {
@@ -53,6 +53,10 @@ class BooksApp extends Component {
     this.setState({query: query}, this.searchBooks) 
   }
 
+  deleteQuery = () => {
+    this.setState({query: ''}, this.searchBooks)
+  }
+
   
 
 
@@ -61,7 +65,7 @@ class BooksApp extends Component {
       
       <div className="app">
         <Route exact path="/search" render={()=>(
-        	<SearchBooks updateQuery={this.updateQuery} change={this.changeShelf} book={this.state} searchBooks={this.searchBooks} />
+        	<SearchBooks deleteQuery={this.deleteQuery} updateQuery={this.updateQuery} change={this.changeShelf} book={this.state} searchBooks={this.searchBooks} />
         )}/>
         <Route exact path="/" render={()=>(
         	<Home book={this.state} change={this.changeShelf}/>
