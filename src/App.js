@@ -37,14 +37,20 @@ class BooksApp extends Component {
       if(res.error || !res){
         return this.setState({ results: [] })
       } else {
+        this.state.allBooks.forEach((allBook)=>{
+          res.forEach(resBook=>{
+            if(allBook.id===resBook.id){
+              resBook.shelf=allBook.shelf
+            }
+          })
+        })
         return this.setState({ results: res })
       }
     })
   }
 
   updateQuery = (query) => {
-    query ? this.setState({query: query}, this.searchBooks) :
-      this.setState({query: ''}, this.searchBooks)
+    this.setState({query: query}, this.searchBooks) 
   }
 
   
