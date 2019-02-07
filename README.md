@@ -26,4 +26,6 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+## Known Bug
 
+There is a bug where pressing and holding "back space button" will result in the searched book to behave as intended but reappear when search bar has been cleared of all texts
