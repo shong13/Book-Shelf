@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/shong13/Book-Shelf/precache-manifest.18402b30d166f25625917008e14e8ca6.js"
+  "/Book-Shelf/precache-manifest.27ee326f00ee39508200ac9b15a2d4e2.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/shong13/Book-Shelf/index.html", {
+workbox.routing.registerNavigationRoute("/Book-Shelf/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
