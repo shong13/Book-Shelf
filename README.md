@@ -1,3 +1,7 @@
+---
+permalink: /public/index.html
+---
+
 # MyReads Project
 
 ## Get started
